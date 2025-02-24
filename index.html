@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filipp FUGA Portfolio Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("contact-form");
+      const captchaOpen = document.getElementById("captcha-open");
+      const captchaModal = document.getElementById("captcha-modal");
+      const captchaInput = document.getElementById("captcha-input");
+      const captchaSubmit = document.getElementById("captcha-submit");
+  
+      // Ouvrir la modale
+      captchaOpen.addEventListener("click", function () {
+        captchaModal.style.display = "flex";
+      });
+  
+      // Vérifier le CAPTCHA et envoyer le formulaire
+      captchaSubmit.addEventListener("click", async function () {
+        if (captchaInput.value.trim() !== "7") {
+          alert("Captcha incorrect. Essayez encore.");
+          return;
+        }
+  
+        // Fermer la modale
+        captchaModal.style.display = "none";
+  
+        // Envoi du formulaire
+        const formData = new FormData(form);
+        try {
+          const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: { "Accept": "application/json" },
+          });
+  
+          if (response.ok) {
+            alert("Votre message a été envoyé avec succès !");
+            form.reset();
+          } else {
+            alert("Erreur lors de l'envoi du message. Veuillez réessayer.");
+          }
+        } catch (error) {
+          alert("Problème de connexion. Vérifiez votre internet.");
+        }
+      });
+    });
+  </script>
+  
+  <body>
+    <header class="header">
+      <a href="#home" class="logo"> Filipp <span>FUGA</span> </a>
+      <i class="bx bx-menu" id="menu-icon"></i>
+      <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a href="#contact" class="gradient-btn">Contact Me</a>
+    </header>
+
+    <section class="home" id="home">
+      <div class="home-content">
+        <h1>Hi, I'm <span>Filipp</span></h1>
+        <h3>A <span>Freelance Fullstack Web Developer</span></h3>
+        <p>
+          I specialize in building modern, scalable, and secure web
+          applications. My expertise spans backend development with Java (Spring
+          Boot), PHP (Symfony), and frontend technologies like JavaScript,
+          React, and Bootstrap. I also offer database management with MySQL and
+          NoSQL solutions.
+        </p>
+        <div class="social-icons">
+          <a
+            href="https://github.com/Fantommmmm?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><i class="bx bxl-github"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/filipp-fuga/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><i class="bx bxl-linkedin-square"></i
+          ></a>
+          <!-- <a href="#"><i class="bx bxl-tiktok"></i></a>
+          <a href="#"><i class="bx bxl-facebook"></i></a> -->
+        </div>
+        <div class="btn-group">
+          <button class="btn" id="hire-btn">Hire Me</button>
+          <div class="hire-dropdown" id="hire-dropdown">
+            <a href="https://www.upwork.com/freelancers/~01b49f8c2472c257ab?mp_source=share" target="_blank" rel="noopener noreferrer">
+              <i class="bx bxl-upwork"></i> Upwork
+            </a>
+            <a href="https://www.fiverr.com/s/zWKA7qd" target="_blank" rel="noopener noreferrer">
+              <i class="bx bxl-fiverr"></i> Fiverr
+            </a>
+          </div>
+          <a href="#contact" class="btn">Contact</a>
+        </div>
+        
+      </div>
+      <div class="home-img">
+        <img src="image.png" alt="Filipp FUGA" />
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-img">
+        <img src="image.png" alt="Filipp FUGA" />
+      </div>
+      <div class="about-content">
+        <h2>About <span>Me</span></h2>
+        <p>
+          I'm a professional fullstack developer with experience in backend and
+          frontend development. I have built multiple web applications ranging
+          from e-commerce solutions to dynamic CMS platforms. My passion is to
+          deliver high-performance, visually appealing, and secure applications.
+        </p>
+        <a href="#projects" class="btn">See My Work</a>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <h2 class="heading">Services</h2>
+      <div class="services-container">
+        <div class="service-box">
+          <div class="service-info">
+            <i class="bx bx-code"></i>
+            <h4>Fullstack Web Development</h4>
+            <p>
+              Custom web applications with Java, PHP, and JavaScript frameworks.
+              Scalable, high-performance, and secure solutions tailored to your
+              needs.
+            </p>
+          </div>
+        </div>
+        <div class="service-box">
+          <div class="service-info">
+            <i class="bx bx-laptop"></i>
+            <h4>Website Optimization</h4>
+            <p>
+              Performance tuning, SEO optimization, and security enhancements to
+              boost user experience and online visibility.
+            </p>
+          </div>
+        </div>
+        <div class="service-box">
+          <div class="service-info">
+            <i class="bx bx-server"></i>
+            <h4>Backend API Development</h4>
+            <p>
+              Developing robust and secure RESTful APIs, database management,
+              and backend architecture with Spring Boot and Symfony.
+            </p>
+          </div>
+        </div>
+        <div class="service-box">
+          <div class="service-info">
+            <i class="bx bx-paint"></i>
+            <h4>UI/UX Design</h4>
+            <p>
+              Crafting modern, user-friendly interfaces with Figma, Tailwind
+              CSS, and Bootstrap to enhance user experience.
+            </p>
+          </div>
+        </div>
+        <div class="service-box">
+          <div class="service-info">
+            <i class="bx bx-shopping-bag"></i>
+            <h4>E-Commerce Development</h4>
+            <p>
+              Creating high-performance e-commerce platforms with secure payment
+              integrations and smooth user experience.
+            </p>
+          </div>
+        </div>
+        <div class="service-box">
+          <div class="service-info">
+            <i class="bx bx-cloud"></i>
+            <h4>Cloud Deployment & DevOps</h4>
+            <p>
+              Deploying and managing applications on cloud platforms like AWS
+              and DigitalOcean with CI/CD pipelines.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="projects">
+      <h2 class="heading">Projects</h2>
+      <div class="projects-box">
+        <div class="project-card">
+          <img src="green-wear.jpg" alt="Green Wear" />
+          <h3>Green Wear</h3>
+          <p>
+            A sustainable fashion e-commerce site built with Java Spring Boot,
+            HTML, CSS, JS, MySQL, NoSQL, and Bootstrap. Features include product
+            & category management, user authentication, and Stripe payment
+            integration.
+          </p>
+          <a
+            href="https://github.com/Fantommmmm/GreenWear"
+            class="btn"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Review Project</a
+          >
+        </div>
+        <div class="project-card">
+          <img src="pagefy.jpg" alt="Pagefy" height="238" />
+          <h3>Pagefy</h3>
+          <p>
+            An online book subscription platform using PHP Symfony, HTML, CSS,
+            JS, Bootstrap, MySQL, and NoSQL. Users can subscribe, explore book
+            categories, read previews, and access premium content via Stripe.
+          </p>
+          <a
+            href="https://github.com/Fantommmmm/Pagefy"
+            class="btn"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Review Project</a
+          >
+        </div>
+        <div class="project-card">
+          <img src="massis.jpg" alt="Massis Grocery Store" height="249" />
+          <h3>Epicerie Massis</h3>
+          <p>
+            An online grocery store featuring product listings and order
+            placement. Built with HTML, CSS, JS, PHP, and MySQL, it allows users
+            to browse items and contact the store directly.
+          </p>
+          <a
+            href="https://github.com/Fantommmmm/Massis"
+            class="btn"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Review Project</a
+          >
+        </div>
+        <div class="project-card">
+          <img src="site-eglises.jpg" alt="Church Websites" />
+          <h3>Church Websites</h3>
+          <p>
+            A WordPress multisite platform enabling each church to have a
+            customizable subsite. Includes homepage, sermons, events, galleries,
+            contact forms, and a main map displaying affiliated churches.
+          </p>
+          <button class="btn">Coming Soon</button>
+        </div>
+        <div class="project-card">
+          <img
+            src="ja.jpg"
+            alt="Jeunesse Adventiste"
+            width="500'px"
+            height="237"
+          />
+          <h3>Adventist Youth</h3>
+          <p>
+            A WordPress-based platform for Adventist youth. Built with PHP,
+            HTML, CSS, and JS, it provides event updates, member logins, and
+            resources for community engagement.
+          </p>
+          <button class="btn">Coming Soon</button>
+        </div>
+        <div class="project-card">
+          <img
+            src="studio.jpg"
+            alt="Studio Rental"
+            width="500'px"
+            height="228"
+          />
+          <h3>Studio Rental</h3>
+          <p>
+            A WordPress-powered booking site for Studio Esperance in Paris.
+            Users can check availability, reserve a studio, and contact the
+            management through the platform. Built with PHP, HTML, CSS, and JS.
+          </p>
+          <button class="btn">Coming Soon</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <h2 class="heading">Frequently Asked <span>Questions</span></h2>
+      <div class="faq-container">
+        <!-- FAQ ITEM 1 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How can I hire you or request a quote?</span>
+            <i class="bx bx-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              You can hire me directly on Upwork or Fiverr by clicking the "Hire Me"
+              button at the top of the page, or send me a message through the
+              contact form at the bottom.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ ITEM 2 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Which technologies do you specialize in?</span>
+            <i class="bx bx-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              I primarily work with Java (Spring Boot), PHP (Symfony), and
+              JavaScript frameworks (React, etc.). I also have experience with
+              MySQL, NoSQL, Tailwind CSS, and more.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ ITEM 3 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How long does a typical project take?</span>
+            <i class="bx bx-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              It depends on the scope and complexity. Smaller projects can take
+              a week, while larger applications may require several
+              months. We’ll agree on a clear timeline before we start.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ ITEM 4 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do we communicate during the project?</span>
+            <i class="bx bx-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              I typically use email, Discord, or Zoom for regular updates and
+              meetings. Communication frequency can be tailored to your
+              preference, whether it's weekly check-ins or daily updates.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ ITEM 5 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What is your payment policy?</span>
+            <i class="bx bx-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              I usually require a 30% deposit upfront. The remaining balance is
+              split into milestones or paid upon project completion, depending
+              on the agreement. I accept payments via bank transfer , Revolut or PayPal.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ ITEM 6 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Do you offer revisions or post-launch support?</span>
+            <i class="bx bx-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Yes! I offer a set number of revisions during development. For
+              ongoing maintenance or additional features, I also provide
+              post-launch support plans at an agreed-upon rate.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2 class="heading">Contact <span>Me</span></h2>
+      <form action="https://formspree.io/f/manqzrob" method="POST" id="contact-form">
+        <div class="input-group">
+          <div class="input-box">
+            <input type="text" name="name" placeholder="Name" required />
+            <input type="email" name="email" placeholder="Email" required />
+          </div>
+    
+          <div class="input-box">
+            <input type="number" name="phone" placeholder="Phone number" required />
+            <input type="text" name="subject" placeholder="Subject" required />
+          </div>
+        </div>
+    
+        <div class="input-group2">
+          <textarea name="message" id="message" placeholder="Your message" cols="30" rows="10" required></textarea>
+    
+          <!-- Bouton qui ouvre la fenêtre CAPTCHA -->
+          <button type="button" class="btn" id="captcha-open">Send message</button>
+        </div>
+      </form>
+    </section>
+    
+    <!-- MODAL CAPTCHA -->
+    <div id="captcha-modal" class="modal">
+      <div class="modal-content">
+        <h3>Security Check</h3>
+        <p>What is 4 + 3?</p>
+        <input type="text" id="captcha-input" required />
+        <button class="btn" id="captcha-submit">Verify</button>
+      </div>
+    </div>
+    
+    
+
+    <footer class="footer">
+      <div class="social-icons">
+        <a href="https://github.com/Fantommmmm?tab=repositories">
+          <i class="bx bxl-github"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/filipp-fuga/">
+          <i class="bx bxl-linkedin-square"></i>
+        </a>
+
+        <!-- <a href="#">
+          <i class="bx bxl-tiktok"></i>
+        </a>
+
+        <a href="#">
+          <i class="bx bxl-facebook"></i>
+        </a> -->
+      </div>
+
+      <ul class="list">
+        <li>
+          <a href="#faq">FAQ</a>
+        </li>
+
+        <li>
+          <a href="#services">Services</a>
+        </li>
+
+        <li>
+          <a href="#about">About me</a>
+        </li>
+        <li>
+          <a href="#projects">Projects</a>
+        </li>
+        <li>
+          <a href="#contact">Contact</a>
+        </li>
+      </ul>
+
+      <p class="copyright">© Fuga Filipp | All Rights Reserved</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
